@@ -6,6 +6,8 @@ const sketch = (p5: P5) => {
 
   let lumen: Lumen;
   let wall: Wall;
+  let walls: Wall[] = [];
+  const walls_count = 10;
 
   /**
    * This function is called once when the program starts.
@@ -25,7 +27,10 @@ const sketch = (p5: P5) => {
     lumen = new Lumen(p5.createVector(p5.width * 0.5, p5.height * 0.5), p5.color(255), 16);
     lumen.followMouse(false);
 
-    wall = new Wall(p5.createVector(100, 100), p5.createVector(200, 100));
+    for (let i = 0; i < walls_count; i++) {
+      const wall = new Wall(p5.createVector(100, 100), p5.createVector(200, 32 * i));
+      walls.push(wall);
+    }
   }
 
   /**
@@ -38,7 +43,10 @@ const sketch = (p5: P5) => {
 
     // add your code...
     lumen.draw();
-    wall.draw();
+
+    for (let i = 0; i < walls_count; i++) {
+      walls[i].draw();
+    }
   }
 }
 
