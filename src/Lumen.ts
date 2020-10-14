@@ -1,5 +1,7 @@
 import P5, { Color, Vector } from 'p5';
+import Ray from './Ray';
 import p5Instance from './sketch';
+import Wall from './Wall';
 
 class Lumen {
   p5: P5;
@@ -35,6 +37,48 @@ class Lumen {
     p5.fill(color);
     p5.noStroke();
     p5.circle(position.x, position.y, radius * 2);
+  }
+
+  castRaysToWalls(walls: Wall[], rays_count: number = 360) {
+    const { p5 } = this;
+
+    // loop through rays count
+    for (let i = 0; i < rays_count; i++) {
+      let length: number = Infinity;
+      let closest: Vector = p5.createVector(0, 0);
+      p5.angleMode(p5.DEGREES);
+      let ray = new Ray(this.position, p5.createVector(1024, 640).rotate(i), p5.color('white'));
+
+      // loop through walls
+      walls.forEach((wall) => {
+        // get intersection point to wall
+        let intersection = Ray.Intersection(ray, wall);
+        // cast ray to intersection point
+        if (intersection) {
+          // calculate distance between lumen position and ray intersection point to wall
+          var distance = this.position.dist(intersection);
+          // check if distance is smaller than length of ray
+          if (distance < length) {
+            // change length of ray to calculated distance of intersection
+            length = distance;
+            // cache intersection point of closest wall
+            closest = intersection;
+          }
+        }
+      });
+
+      // got any closest wall?
+      if (closest) {
+        // change position.b of ray to closest wall so it doesn't overflow
+        ray.position.b = closest;
+      }
+
+      // draw ray
+      if (ray.position.b.x > 0 && ray.position.b.y > 0) {
+        ray.draw();
+        ray = null;
+      }
+    }
   }
 }
 

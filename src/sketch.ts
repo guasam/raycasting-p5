@@ -21,11 +21,11 @@ const sketch = (p5: P5) => {
     p5.background(0);
 
     // set fps
-    p5.frameRate(30);
+    p5.frameRate(60);
 
     // add your code...
     lumen = new Lumen(p5.createVector(p5.width * 0.5, p5.height * 0.5), p5.color(255), 16);
-    lumen.followMouse(false);
+    lumen.followMouse(true);
 
     for (let i = 0; i < walls_count; i++) {
       const randPosA = p5.createVector(p5.random(0, p5.width), p5.random(0, p5.height));
@@ -43,12 +43,16 @@ const sketch = (p5: P5) => {
     // set background color
     p5.background(0);
 
-    // add your code...
+    // draw lumen
     lumen.draw();
 
+    // draw walls
     for (let i = 0; i < walls_count; i++) {
       walls[i].draw();
     }
+
+    // cast rays to walls
+    lumen.castRaysToWalls(walls);
   }
 }
 
