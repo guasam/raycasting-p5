@@ -8,7 +8,7 @@ const sketch = (p5: P5) => {
   let lumen: Lumen;
   let wall: Wall;
   let walls: Wall[] = [];
-  const walls_count = 10;
+  const walls_count = 6;
 
   /**
    * This function is called once when the program starts.
