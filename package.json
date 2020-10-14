@@ -1,8 +1,7 @@
 {
-  "name": "p5-doohickey",
+  "name": "raycasting-p5",
   "version": "0.1.0",
-  "description": "A simple doohickey tool for creating p5.js based projects",
-  "main": "index.js",
+  "description": "Raycasting simulation project made with JavaScript and P5 Technologies",
   "author": "guasam",
   "repository": {
     "type": "git",
