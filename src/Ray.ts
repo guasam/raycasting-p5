@@ -24,6 +24,8 @@ class Ray {
     const { p5, color } = this;
     const { a, b } = this.position;
 
+    // color alpha
+    color.setAlpha(100);
     // apply color
     p5.stroke(color);
     // create line
