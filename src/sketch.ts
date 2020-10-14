@@ -28,7 +28,9 @@ const sketch = (p5: P5) => {
     lumen.followMouse(false);
 
     for (let i = 0; i < walls_count; i++) {
-      const wall = new Wall(p5.createVector(100, 100), p5.createVector(200, 32 * i));
+      const randPosA = p5.createVector(p5.random(0, p5.width), p5.random(0, p5.height));
+      const randPosB = p5.createVector(p5.random(0, p5.width), p5.random(0, p5.height));
+      const wall = new Wall(randPosA, randPosB);
       walls.push(wall);
     }
   }
