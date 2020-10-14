@@ -1,5 +1,6 @@
-import P5 from "p5";
+import P5, { Vector } from "p5";
 import Lumen from './Lumen';
+import { Line } from "./typings";
 import Wall from "./Wall";
 
 const sketch = (p5: P5) => {
@@ -51,8 +52,31 @@ const sketch = (p5: P5) => {
       walls[i].draw();
     }
 
+    // draw boundaries
+    //drawBoundaries();
+
     // cast rays to walls
     lumen.castRaysToWalls(walls);
+
+  }
+
+  const drawBoundaries = () => {
+    // screen size
+    const size: Vector = p5.createVector(p5.width - 1, p5.height - 1);
+    // boundaries points on screen (top, right, bottom, left)
+    var bounds: Line[] = [
+      { a: p5.createVector(0, 0), b: p5.createVector(size.x, 0) },
+      { a: p5.createVector(size.x, 0), b: p5.createVector(size.x, size.y) },
+      { a: p5.createVector(0, size.y), b: p5.createVector(size.x, size.y) },
+      { a: p5.createVector(0, 0), b: p5.createVector(0, size.y) },
+    ];
+    // loop through boundaries
+    bounds.forEach((bound) => {
+      // create wall using boundary points
+      var wall = new Wall(bound.a, bound.b, null, p5.color('red'));
+      // draw boundaries
+      wall.draw();
+    });
   }
 }
 

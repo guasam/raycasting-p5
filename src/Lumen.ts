@@ -47,7 +47,7 @@ class Lumen {
       let length: number = Infinity;
       let closest: Vector = p5.createVector(0, 0);
       p5.angleMode(p5.DEGREES);
-      let ray = new Ray(this.position, p5.createVector(1024, 640).rotate(i), p5.color('white'));
+      let ray = new Ray(this.position, p5.createVector(800, 640).rotate(i), p5.color('white'));
 
       // loop through walls
       walls.forEach((wall) => {
@@ -68,16 +68,12 @@ class Lumen {
       });
 
       // got any closest wall?
-      if (closest) {
+      if (closest.x > 0 || closest.y > 0) {
         // change position.b of ray to closest wall so it doesn't overflow
         ray.position.b = closest;
       }
-
       // draw ray
-      if (ray.position.b.x > 0 && ray.position.b.y > 0) {
-        ray.draw();
-        ray = null;
-      }
+      ray.draw();
     }
   }
 }
