@@ -24,17 +24,17 @@ class Lumen {
   }
 
   draw() {
-    const { p5 } = this;
+    const { p5, follow_mouse, color, radius, position } = this;
 
     // should we follow mouse?
-    if (this.follow_mouse) {
+    if (follow_mouse) {
       this.position = p5.createVector(p5.mouseX, p5.mouseY)
     }
 
     // draw circle for lumen
-    p5.fill(this.color);
+    p5.fill(color);
     p5.noStroke();
-    p5.circle(this.position.x, this.position.y, this.radius * 2);
+    p5.circle(position.x, position.y, radius * 2);
   }
 }
 
