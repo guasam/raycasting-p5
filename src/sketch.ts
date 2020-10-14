@@ -5,7 +5,6 @@ import Wall from "./Wall";
 const sketch = (p5: P5) => {
 
   let lumen: Lumen;
-  let wall: Wall;
   let walls: Wall[] = [];
   const walls_count = 6;
 
