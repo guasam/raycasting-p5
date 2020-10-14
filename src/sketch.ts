@@ -20,7 +20,7 @@ const sketch = (p5: P5) => {
     p5.frameRate(30);
 
     // add your code...
-    lumen = new Lumen(p5, p5.createVector(p5.width * 0.5, p5.height * 0.5), p5.color(255), 16);
+    lumen = new Lumen(p5.createVector(p5.width * 0.5, p5.height * 0.5), p5.color(255), 16);
     lumen.followMouse(false);
   }
 

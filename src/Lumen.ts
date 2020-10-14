@@ -1,4 +1,5 @@
 import P5 from 'p5';
+import p5Instance from './sketch';
 
 class Lumen {
   p5: P5;
@@ -7,8 +8,8 @@ class Lumen {
   radius: number;
   follow_mouse: boolean = false;
 
-  constructor(_p5: P5, _position: P5.Vector, _color: P5.Color, _radius: number) {
-    this.p5 = _p5;
+  constructor(_position: P5.Vector, _color: P5.Color, _radius: number) {
+    this.p5 = p5Instance;
     this.position = _position;
     this.color = _color;
     this.radius = _radius;
