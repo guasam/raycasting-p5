@@ -47,7 +47,7 @@ class Lumen {
       let length: number = Infinity;
       let closest: Vector = p5.createVector(0, 0);
       p5.angleMode(p5.DEGREES);
-      let ray = new Ray(this.position, p5.createVector(800, 640).rotate(i), p5.color('white'));
+      let ray = new Ray(this.position, p5.createVector(p5.width, p5.height).rotate(i), p5.color('white'));
 
       // loop through walls
       walls.forEach((wall) => {
