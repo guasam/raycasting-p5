@@ -20,6 +20,16 @@ class Ray {
     this.position = { a: posA, b: posB };
   }
 
+  draw() {
+    const { p5, color } = this;
+    const { a, b } = this.position;
+
+    // apply color
+    p5.stroke(color);
+    // create line
+    p5.line(a.x, a.y, b.x, b.y);
+  }
+
   static Intersection(ray: Ray, wall: Wall) {
     let x1 = ray.position.a.x;
     let y1 = ray.position.a.y;
