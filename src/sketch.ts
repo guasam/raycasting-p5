@@ -1,9 +1,11 @@
 import P5 from "p5";
 import Lumen from './Lumen';
+import Wall from "./Wall";
 
 const sketch = (p5: P5) => {
 
   let lumen: Lumen;
+  let wall: Wall;
 
   /**
    * This function is called once when the program starts.
@@ -22,6 +24,8 @@ const sketch = (p5: P5) => {
     // add your code...
     lumen = new Lumen(p5.createVector(p5.width * 0.5, p5.height * 0.5), p5.color(255), 16);
     lumen.followMouse(false);
+
+    wall = new Wall(p5.createVector(100, 100), p5.createVector(200, 100));
   }
 
   /**
@@ -34,6 +38,7 @@ const sketch = (p5: P5) => {
 
     // add your code...
     lumen.draw();
+    wall.draw();
   }
 }
 
