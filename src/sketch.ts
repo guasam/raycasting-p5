@@ -9,7 +9,7 @@ const sketch = (p5: P5) => {
   let walls: Wall[] = [];
   const walls_count = 6;
   const total_rays = 360;
-  const debug = true;
+  const debug = false;
 
   /**
    * This function is called once when the program starts.
