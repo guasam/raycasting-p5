@@ -1,4 +1,5 @@
 import P5 from "p5";
+import Debug from "./Debug";
 import Lumen from './Lumen';
 import Wall from "./Wall";
 
@@ -7,6 +8,8 @@ const sketch = (p5: P5) => {
   let lumen: Lumen;
   let walls: Wall[] = [];
   const walls_count = 6;
+  const total_rays = 360;
+  const debug = true;
 
   /**
    * This function is called once when the program starts.
@@ -54,7 +57,14 @@ const sketch = (p5: P5) => {
     // drawBoundaries();
 
     // cast rays to walls
-    lumen.castRaysToWalls(walls);
+    const result = lumen.castRaysToWalls(walls, total_rays);
+
+    // draw debug info
+    if (debug) {
+      Debug.LumenPosition(lumen.position);
+      Debug.CastedRaysCount(result.casted_rays_count);
+      Debug.RaysCount(total_rays);
+    }
   }
 
   /*

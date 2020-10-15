@@ -3,6 +3,10 @@ import Ray from './Ray';
 import p5Instance from './sketch';
 import Wall from './Wall';
 
+interface CastRaysToWalls {
+  casted_rays_count: number;
+}
+
 class Lumen {
   p5: P5;
   position: Vector;
@@ -39,8 +43,9 @@ class Lumen {
     p5.circle(position.x, position.y, radius * 2);
   }
 
-  castRaysToWalls(walls: Wall[], rays_count: number = 360) {
+  castRaysToWalls(walls: Wall[], rays_count: number = 360) : CastRaysToWalls {
     const { p5 } = this;
+    let casted_rays_count = 0;
 
     // loop through rays count
     for (let i = 0; i < rays_count; i++) {
@@ -71,9 +76,15 @@ class Lumen {
       if (closest.x > 0 || closest.y > 0) {
         // change position.b of ray to closest wall so it doesn't overflow
         ray.position.b = closest;
+        // increase casted rays count
+        casted_rays_count++;
       }
       // draw ray
       ray.draw();
+    }
+
+    return {
+      casted_rays_count
     }
   }
 }
